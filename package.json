@@ -1,0 +1,19 @@
+{
+  "name": "Redux_Counter",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "setup": "yarn && cd client && yarn ",
+    "test": "cd client && yarn test "
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.17.5"
+  }
+}
