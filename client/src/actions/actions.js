@@ -1,3 +1,5 @@
+import Auth from '../modules/Auth';
+
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const ADD_VALUE = 'ADD_VALUE';
@@ -41,7 +43,13 @@ export function receiveData(value) {
 }
 
 const callApi = async () => {
-  const response = await fetch('/api/counter');
+  const response = await fetch('/api/get-counter', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+  });
   const body = await response.json();
   if (response.status !== 200) {
     throw Error(body.message);

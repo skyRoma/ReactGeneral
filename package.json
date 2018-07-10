@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && yarn start",
-    "server": "nodemon server.js",
+    "server": "nodemon index.js",
     "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "setup": "yarn && cd client && yarn ",
     "test": "cd client && yarn test "
   },
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "validator": "^6.2.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",

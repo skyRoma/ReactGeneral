@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
-import App from '../App/App';
+import Main from '../Main/Main';
 
 const initialState = { counter: 0 };
 const mockStore = configureStore();
@@ -20,7 +20,7 @@ function setup() {
     drop: jest.fn(),
     fetchData: jest.fn(),
   };
-  const enzymeWrapper = mount(<Provider store={store}><App {...props} /></Provider>);
+  const enzymeWrapper = mount(<Provider store={store}><Main {...props} /></Provider>);
   return {
     props,
     enzymeWrapper,
@@ -28,7 +28,7 @@ function setup() {
 }
 
 describe('components', () => {
-  describe('App', () => {
+  describe('Main', () => {
     it('should render one <AppHeader /> component', () => {
       const { enzymeWrapper } = setup();
       expect(enzymeWrapper.find('AppHeader')).toHaveLength(1);
@@ -54,7 +54,7 @@ describe('components', () => {
     });
 
     it('componentDidMount should call fetchData() function', () => {
-      const { enzymeWrapper, props } = setup();
+      const { props } = setup();
       expect(props.fetchData.mock.calls.length).toBe(1);
     });
   });

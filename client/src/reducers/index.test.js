@@ -91,4 +91,22 @@ describe('reducer', () => {
       }
     );
   });
+
+  it('should handle RECEIVE', () => {
+    expect(
+      reducer(
+        {
+          counter: 12,
+        },
+        {
+          type: actionTypes.RECEIVE,
+          value: 56,
+        }
+      )
+    ).toEqual(
+      {
+        counter: 56,
+      }
+    );
+  });
 });

@@ -1,3 +1,5 @@
+import Auth from '../modules/Auth';
+
 function handleMouseDown(event) {
   let currentRemoveDroppable = null;
   let currentSaveDroppable = null;
@@ -64,15 +66,16 @@ function handleMouseDown(event) {
       this.setState({ recycleBinActive: false });
     }
     if (currentSaveDroppable) {
-      fetch('/api/post', {
+      fetch('/api/set-counter', {
         method: 'post',
         headers: {
-          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+          'Content-type': 'application/x-www-form-urlencoded',
+          Authorization: `bearer ${Auth.getToken()}`,
         },
         body: `counter=${this.props.counter}`,
       })
         .catch(function (error) {  
-          console.log('Request failed', error);  
+          console.error(`Request failed: ${error}`);
         });
       this.setState({ saveActive: false });
     }

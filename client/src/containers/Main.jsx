@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import * as actions from '.././actions/actions';
-import App from '../components/App/App';
+import Main from '../components/Main/Main';
 
 const mapDispatchToProps = dispatch => ({
   dropRemove: () => dispatch(actions.remove()),
@@ -11,4 +11,4 @@ const mapStateToProps = state => ({
   counter: state.counter,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
