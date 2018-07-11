@@ -40,7 +40,7 @@ router.post('/set-counter', async (req, res) => {
 
     const userId = decoded.sub;
 
-    User.update({ _id: userId }, {"$set": { counter: req.body.counter }}, ((err)=>{console.error}));
+    User.update({ _id: userId }, {"$set": { counter: req.body.counter }}, ((err)=>{console.error(err)}));
     res.status(201).send('POST request'); 
   });
 })
