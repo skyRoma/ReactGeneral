@@ -14,13 +14,13 @@ class AuthWindow extends Component {
       email: '',
       password: '',
     },
-    successMessage: null,
+    successMessage: '',
   };
 
   componentDidMount = () => {
-    const storedMessage = localStorage.getItem('successMessage');
+    const storedMessage = this.props.successMessage;
     if (storedMessage) {
-      localStorage.removeItem('successMessage');
+      this.props.removeSucessMsg();
     }
     this.setState({
       successMessage: storedMessage,
@@ -85,7 +85,7 @@ class AuthWindow extends Component {
         this.setState({
           errors: {},
         });
-        localStorage.setItem('successMessage', data.message);
+        this.props.addSucessMsg(data.message);
         this.props.history.push(paths.login);
       })
       .catch((errorData) => {
@@ -141,6 +141,9 @@ class AuthWindow extends Component {
 }
 
 AuthWindow.propTypes = {
+  addSucessMsg: PropTypes.func.isRequired,
+  removeSucessMsg: PropTypes.func.isRequired,
+  successMessage: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
 };
 

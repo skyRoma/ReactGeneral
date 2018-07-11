@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import Main from '../../containers/Main';
-import AuthWindow from '../../components/AuthWindow/AuthWindow';
+import AuthWindow from '../../containers/AuthWindow';
 import Home from '../../components/Home/Home';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import paths from '../../constants/paths';

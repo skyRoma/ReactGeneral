@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actions';
 
 const initialState = {
   counter: 0,
+  successMessage: '',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -35,6 +36,16 @@ const rootReducer = (state = initialState, action) => {
     return {
       ...state,
       counter: action.value,
+    };
+  case actionTypes.ADD_SUCCESS_MSG:
+    return {
+      ...state,
+      successMessage: action.value,
+    };
+  case actionTypes.REMOVE_SUCCESS_MSG:
+    return {
+      ...state,
+      successMessage: undefined,
     };
   default:
     return state;
