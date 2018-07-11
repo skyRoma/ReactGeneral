@@ -1,4 +1,4 @@
-import Auth from '../modules/Auth';
+import Auth from '../services/Auth';
 
 function handleMouseDown(event) {
   let currentRemoveDroppable = null;

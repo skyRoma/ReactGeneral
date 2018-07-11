@@ -4,7 +4,7 @@ import { AppWrapper, DropContainer, RecycleBin, Save, LogOutBtn } from './style'
 import Options from '../../containers/Options';
 import AppHeader from '../../components/Header/Header';
 import handleMouseDown from '../../utils/Drag&Drop';
-import Auth from '../../modules/Auth';
+import Auth from '../../services/Auth';
 
 class App extends Component {
   constructor(props) {

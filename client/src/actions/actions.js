@@ -1,4 +1,4 @@
-import Auth from '../modules/Auth';
+import Auth from '../services/Auth';
 
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';

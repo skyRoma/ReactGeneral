@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { UserImg, SignView, Input, LoginBtn, ErrorMsg, AuthQuestion, AuthLink } from './style';
-import Auth from '../../modules/Auth';
+import Auth from '../../services/Auth';
 import paths from '../../constants/paths';
 
 
