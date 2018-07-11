@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Auth from '../../modules/Auth';
+import paths from '../../constants/paths';
 
 class PrivateRoute extends React.Component {
   state = {
@@ -37,7 +38,7 @@ class PrivateRoute extends React.Component {
             <Component {...props} />
           ) : (
             <Redirect to={{
-              pathname: '/login',
+              pathname: paths.login,
               state: { from: props.location },
             }}
             />

@@ -1,14 +1,15 @@
 import React from 'react';
 import { LogoImg, HomeView, Button, StartBtn, ButtonWrapper, StyledLink } from './style';
+import paths from '../../constants/paths';
 
 const Home = () => (
   <HomeView>
     <LogoImg />
     <ButtonWrapper>
-      <StyledLink to="/login"><Button>Sign In</Button></StyledLink>
-      <StyledLink to="/join"><Button>Sign Up</Button></StyledLink>
+      <StyledLink to={paths.login}><Button>Sign In</Button></StyledLink>
+      <StyledLink to={paths.join}><Button>Sign Up</Button></StyledLink>
     </ButtonWrapper>
-    <StyledLink to="/api/counter"><StartBtn>Start</StartBtn></StyledLink>
+    <StyledLink to={paths.counterApi}><StartBtn>Start</StartBtn></StyledLink>
   </HomeView>
 );
 

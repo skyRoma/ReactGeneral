@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { UserImg, SignView, Input, LoginBtn, ErrorMsg, AuthQuestion, AuthLink } from './style';
 import Auth from '../../modules/Auth';
+import paths from '../../constants/paths';
 
 
 class AuthWindow extends Component {
@@ -77,7 +78,7 @@ class AuthWindow extends Component {
       });
 
       localStorage.setItem('successMessage', body.message);
-      this.props.history.push('/login');
+      this.props.history.push(paths.login);
     } else {
       const errors = body.errors ? body.errors : {};
       errors.summary = body.message;
@@ -107,22 +108,22 @@ class AuthWindow extends Component {
 
     return (
       <SignView>
-        <UserImg userRole={pathname === '/login' ? 'user' : 'foreign'} />
+        <UserImg userRole={pathname === paths.login ? 'user' : 'foreign'} />
         {this.state.successMessage && <p className="success-message">{this.state.successMessage}</p>}
         <ErrorMsg isError={this.state.errors.summary} />
         <Input name="email" placeholder="enter your email" onChange={this.changeUser} />
         <ErrorMsg isError={this.state.errors.email} />
         <Input name="password" type="password" placeholder="enter your password" onChange={this.changeUser} />
         <ErrorMsg isError={this.state.errors.password} />
-        {pathname === '/login' ?
+        {pathname === paths.login ?
           <React.Fragment>
             <LoginBtn onClick={this.processFormLogin}>Sign In</LoginBtn>
-            <AuthQuestion>{'Don\'t have an account? '}<AuthLink to="/join">Create one.</AuthLink></AuthQuestion> 
+            <AuthQuestion>{'Don\'t have an account? '}<AuthLink to={paths.join}>Create one.</AuthLink></AuthQuestion> 
           </React.Fragment>
           :
           <React.Fragment>
             <LoginBtn onClick={this.processFormSignUp}>Sign Up</LoginBtn>
-            <AuthQuestion>{'Already have an account? '}<AuthLink to="/login">Log in.</AuthLink></AuthQuestion> 
+            <AuthQuestion>{'Already have an account? '}<AuthLink to={paths.login}>Log in.</AuthLink></AuthQuestion> 
           </React.Fragment>
         }
       </SignView>

@@ -42,7 +42,7 @@ export function receiveData(value) {
   };
 }
 
-const callApi = async () => {
+const getData = async () => {
   const response = await fetch('/api/get-counter', {
     method: 'GET',
     headers: {
@@ -59,7 +59,7 @@ const callApi = async () => {
 
 export function fetchData() {
   return function (dispatch) {
-    callApi()
+    getData()
       .then(res => dispatch(receiveData(res.data)))
       .catch(console.error);
   };

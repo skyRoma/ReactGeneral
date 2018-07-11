@@ -74,7 +74,7 @@ function handleMouseDown(event) {
         },
         body: `counter=${this.props.counter}`,
       })
-        .catch(function (error) {  
+        .catch((error) => {
           console.error(`Request failed: ${error}`);
         });
       this.setState({ saveActive: false });
