@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import user from '../../images/user.svg';
 import foreign from '../../images/foreign.png';
 import { StyledLink } from '../Home/style';
+import userRoles from '../../constants/userRoles';
+
 
 export const UserImg = styled.figure`
-  background-image: url(${props => (props.userRole === 'user' ? user : foreign)});
+  background-image: url(${props => (props.userRole === userRoles.user ? user : foreign)});
   background-size: 100px 100px;
   background-repeat: no-repeat;
   width:100px;

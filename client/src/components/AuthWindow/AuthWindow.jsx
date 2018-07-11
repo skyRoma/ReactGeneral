@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { UserImg, SignView, Input, LoginBtn, ErrorMsg, AuthQuestion, AuthLink } from './style';
 import Auth from '../../services/Auth';
+import userRoles from '../../constants/userRoles';
 import paths from '../../constants/paths';
 
 
@@ -117,7 +118,7 @@ class AuthWindow extends Component {
 
     return (
       <SignView>
-        <UserImg userRole={pathname === paths.login ? 'user' : 'foreign'} />
+        <UserImg userRole={pathname === paths.login ? userRoles.user : userRoles.foreign} />
         {this.state.successMessage && <p className="success-message">{this.state.successMessage}</p>}
         <ErrorMsg isError={this.state.errors.summary} />
         <Input name="email" placeholder="enter your email" onChange={this.changeUser} />
