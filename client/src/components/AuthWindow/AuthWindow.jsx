@@ -32,30 +32,35 @@ class AuthWindow extends Component {
     const password = encodeURIComponent(this.state.user.password);
     const formData = `email=${email}&password=${password}`;
 
-    const response = await fetch('/auth/login', {
+
+    fetch('/auth/login', {
       method: 'post',
       headers: {
         'Content-type': 'application/x-www-form-urlencoded',
       },
       body: formData,
-    });
-    const body = await response.json();
+    })
+      .then(async (res) => {
+        if (res.status !== 200) {
+          throw await res.json();
+        }
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          errors: {},
+          redirectToReferrer: true,
+        });
+        Auth.authenticateUser(data.token);
+      })
+      .catch((errorData) => {
+        const errors = errorData.errors ? errorData.errors : {};
+        errors.summary = errorData.message;
 
-    if (response.status === 200) {
-      this.setState({
-        errors: {},
+        this.setState({
+          errors,
+        });
       });
-
-      Auth.authenticateUser(body.token);
-      this.setState({ redirectToReferrer: true });
-    } else {
-      const errors = body.errors ? body.errors : {};
-      errors.summary = body.message;
-
-      this.setState({
-        errors,
-      });
-    }
   }
 
   processFormSignUp = async () => {
@@ -63,30 +68,34 @@ class AuthWindow extends Component {
     const password = encodeURIComponent(this.state.user.password);
     const formData = `email=${email}&password=${password}`;
 
-    const response = await fetch('/auth/signup', {
+    fetch('/auth/signup', {
       method: 'post',
       headers: {
         'Content-type': 'application/x-www-form-urlencoded',
       },
       body: formData,
-    });
-    const body = await response.json();
+    })
+      .then(async (res) => {
+        if (res.status !== 200) {
+          throw await res.json();
+        }
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          errors: {},
+        });
+        localStorage.setItem('successMessage', data.message);
+        this.props.history.push(paths.login);
+      })
+      .catch((errorData) => {
+        const errors = errorData.errors ? errorData.errors : {};
+        errors.summary = errorData.message;
 
-    if (response.status === 200) {
-      this.setState({
-        errors: {},
+        this.setState({
+          errors,
+        });
       });
-
-      localStorage.setItem('successMessage', body.message);
-      this.props.history.push(paths.login);
-    } else {
-      const errors = body.errors ? body.errors : {};
-      errors.summary = body.message;
-
-      this.setState({
-        errors,
-      });
-    }
   }
 
   changeUser = (event) => {
@@ -118,12 +127,12 @@ class AuthWindow extends Component {
         {pathname === paths.login ?
           <React.Fragment>
             <LoginBtn onClick={this.processFormLogin}>Sign In</LoginBtn>
-            <AuthQuestion>{'Don\'t have an account? '}<AuthLink to={paths.join}>Create one.</AuthLink></AuthQuestion> 
+            <AuthQuestion>{'Don\'t have an account? '}<AuthLink to={paths.join}>Create one.</AuthLink></AuthQuestion>
           </React.Fragment>
           :
           <React.Fragment>
             <LoginBtn onClick={this.processFormSignUp}>Sign Up</LoginBtn>
-            <AuthQuestion>{'Already have an account? '}<AuthLink to={paths.login}>Log in.</AuthLink></AuthQuestion> 
+            <AuthQuestion>{'Already have an account? '}<AuthLink to={paths.login}>Log in.</AuthLink></AuthQuestion>
           </React.Fragment>
         }
       </SignView>
