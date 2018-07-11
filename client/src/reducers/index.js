@@ -45,7 +45,7 @@ const rootReducer = (state = initialState, action) => {
   case actionTypes.REMOVE_SUCCESS_MSG:
     return {
       ...state,
-      successMessage: undefined,
+      successMessage: '',
     };
   default:
     return state;
