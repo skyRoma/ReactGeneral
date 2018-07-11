@@ -99,9 +99,9 @@ class AuthWindow extends Component {
   }
 
   changeUser = (event) => {
-    const field = event.target.name;
+    const { name, value } = event.target;
     const { user } = this.state;
-    user[field] = event.target.value;
+    user[name] = value;
     this.setState({
       user,
     });
