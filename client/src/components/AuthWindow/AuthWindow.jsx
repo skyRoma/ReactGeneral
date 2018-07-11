@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { UserImg, SignView, Input, LoginBtn, ErrorMsg, AuthQuestion, AuthLink } from './style';
+import { UserImg, SignView, LoginBtn, AuthQuestion, AuthLink } from './style';
+import { ErrorMsg } from '../AuthInput/style';
 import Auth from '../../services/Auth';
+import AuthInput from '../../components/AuthInput/AuthInput';
 import userRoles from '../../constants/userRoles';
 import paths from '../../constants/paths';
 
@@ -115,16 +117,14 @@ class AuthWindow extends Component {
     if (redirectToReferrer) {
       return <Redirect to={from.pathname} />;
     }
-
+    const { summary, email, password } = this.state.errors;
     return (
       <SignView>
         <UserImg userRole={pathname === paths.login ? userRoles.user : userRoles.foreign} />
         {this.state.successMessage && <p className="success-message">{this.state.successMessage}</p>}
-        <ErrorMsg isError={this.state.errors.summary} />
-        <Input name="email" placeholder="enter your email" onChange={this.changeUser} />
-        <ErrorMsg isError={this.state.errors.email} />
-        <Input name="password" type="password" placeholder="enter your password" onChange={this.changeUser} />
-        <ErrorMsg isError={this.state.errors.password} />
+        <ErrorMsg isError={summary} />
+        <AuthInput name="email" placeholder="enter your email" handleChange={this.changeUser} isError={email} />
+        <AuthInput name="password" type="password" placeholder="enter your password" handleChange={this.changeUser} isError={password} />
         {pathname === paths.login ?
           <React.Fragment>
             <LoginBtn onClick={this.processFormLogin}>Sign In</LoginBtn>
