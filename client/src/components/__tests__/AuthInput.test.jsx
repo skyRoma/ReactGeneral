@@ -47,10 +47,6 @@ describe('components', () => {
       expect(enzymeWrapper.props().type).toBe('text');
     });
 
-    it('should embed the default value if no value is passed in type prop', () => {
-      expect(enzymeWrapper.props().type).toBe('text');
-    });
-
     it('input changes should call handleChange() function passed in props', () => {
       enzymeWrapper.find('input[onChange]').props().onChange();
       expect(props.handleChange.mock.calls.length).toBe(1);
