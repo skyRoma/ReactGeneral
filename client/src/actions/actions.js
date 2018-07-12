@@ -63,7 +63,7 @@ export function fetchData() {
   return function (dispatch) {
     getData()
       .then(res => dispatch(receiveData(res.data)))
-      .catch(console.error);
+      .catch((err) => { console.error(err); });
   };
 }
 
