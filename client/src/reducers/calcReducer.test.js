@@ -1,7 +1,7 @@
-import reducer from './index';
-import * as actionTypes from '../actions/actions';
+import reducer from './calcReducer';
+import * as actionTypes from '../actions/calculating';
 
-describe('reducer', () => {
+describe('calcReducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual(
       {
@@ -12,7 +12,11 @@ describe('reducer', () => {
 
   it('should handle INCREMENT', () => {
     expect(
-      reducer(undefined, {
+      reducer(
+        {
+          counter: 0,
+        }, 
+        {
         type: actionTypes.INCREMENT,
       })
     ).toEqual(

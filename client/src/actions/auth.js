@@ -14,7 +14,7 @@ export function removeSucessMsg() {
   };
 }
 
-const fetchSignUp = async (formData) => {
+export const fetchSignUp = async (formData) => {
   const response = await fetch('/auth/signup', {
     method: 'post',
     headers: {
@@ -25,7 +25,7 @@ const fetchSignUp = async (formData) => {
   return response;
 };
 
-const fetchSignIn = async (formData) => {
+export const fetchSignIn = async (formData) => {
   const response = await fetch('/auth/login', {
     method: 'post',
     headers: {

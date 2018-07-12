@@ -36,13 +36,7 @@ class AuthWindow extends Component {
     const formData = `email=${email}&password=${password}`;
 
 
-    fetch('/auth/login', {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded',
-      },
-      body: formData,
-    })
+    this.props.fetchSignIn(formData)
       .then(async (res) => {
         if (res.status !== 200) {
           throw await res.json();
@@ -71,13 +65,7 @@ class AuthWindow extends Component {
     const password = encodeURIComponent(this.state.user.password);
     const formData = `email=${email}&password=${password}`;
 
-    fetch('/auth/signup', {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded',
-      },
-      body: formData,
-    })
+    this.props.fetchSignUp(formData)
       .then(async (res) => {
         if (res.status !== 200) {
           throw await res.json();
