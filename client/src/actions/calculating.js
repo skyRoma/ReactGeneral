@@ -6,8 +6,6 @@ export const ADD_VALUE = 'ADD_VALUE';
 export const SUBSTRACT_VALUE = 'SUBSTRACT_VALUE';
 export const REMOVE = 'REMOVE';
 export const RECEIVE = 'RECEIVE';
-export const ADD_SUCCESS_MSG = 'ADD_SUCCESS_MSG';
-export const REMOVE_SUCCESS_MSG = 'REMOVE_SUCCESS_MSG';
 
 export function increment() {
   return {
@@ -37,7 +35,7 @@ export function remove() {
   };
 }
 
-export function receiveData(value) {
+function receiveData(value) {
   return {
     type: RECEIVE,
     value,
@@ -63,19 +61,8 @@ export function fetchData() {
   return function (dispatch) {
     getData()
       .then(res => dispatch(receiveData(res.data)))
-      .catch((err) => { console.error(err); });
-  };
-}
-
-export function addSucessMsg(value) {
-  return {
-    type: ADD_SUCCESS_MSG,
-    value,
-  };
-}
-
-export function removeSucessMsg() {
-  return {
-    type: REMOVE_SUCCESS_MSG,
+      .catch((err) => {
+        console.error(err);
+      });
   };
 }

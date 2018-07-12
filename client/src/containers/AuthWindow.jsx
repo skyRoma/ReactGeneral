@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as actions from '.././actions/actions';
+import * as actions from '.././actions/auth';
 import AuthWindow from '../components/AuthWindow/AuthWindow';
 
 const mapDispatchToProps = dispatch => ({
@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  successMessage: state.successMessage,
+  successMessage: state.authReducer.successMessage,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthWindow);

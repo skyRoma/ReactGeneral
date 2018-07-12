@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as actions from '.././actions/actions';
+import * as actions from '../actions/calculating';
 import Main from '../components/Main/Main';
 
 const mapDispatchToProps = dispatch => ({
@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  counter: state.counter,
+  counter: state.calcReducer.counter,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
