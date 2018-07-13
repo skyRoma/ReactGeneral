@@ -1,40 +1,72 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Auth from '../../services/Auth';
 import paths from '../../constants/paths';
 
-class PrivateRoute extends React.Component {
-  state = {
-    authenticate: false,
-  }
 
-  componentDidMount = async () => {
-    const response = await fetch('/api/counter', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded',
-        Authorization: `bearer ${Auth.getToken()}`,
-      },
-    });
-    if (response.status === 200) {
-      this.setState({
-        authenticate: true,
-      });
-    } else {
-      this.setState({
-        authenticate: false,
-      });
-    }
+// const PrivateRoute = ({ component: Component, isUserAuthenticated, ...rest }) => (
+//   <Route {...rest} render={(props) => (
+//     isUserAuthenticated === true
+//       ? <Component {...props} />
+//       : <Redirect to='/login' />
+//   )} />
+// )
+
+
+
+// const PrivateRoute = ({ path, component, isUserAuthenticated }) => {
+//   console.log(path);
+//   return
+//   <React.Fragment>
+//     {isUserAuthenticated ?
+//       <Route path={path} component={component} />
+//       :
+//       <Redirect to={{ pathname: '/', state: { from: "/login" } }} />
+//     }
+//   </React.Fragment>
+// }
+
+
+
+
+
+// class PrivateRoute extends React.Component {
+
+//   componentDidMount = () => {
+//     this.props.authCheck();
+//   }
+
+//   render() {
+//     // this.props.authCheck();
+//     console.log(this.props.isUserAuthenticated);
+//     return (
+//       <React.Fragment>
+//         {this.props.isUserAuthenticated ?
+//           <Route path={this.props.path} component={this.props.component} />
+//           :
+//           <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
+//         }
+//       </React.Fragment>
+//     );
+//   }
+// }
+
+
+class PrivateRoute extends React.Component {
+
+  componentWillMount = () => {
+    this.props.authCheck();
   }
 
   render() {
+    // this.props.authCheck();
+    // console.log(this.props.isUserAuthenticated);
     const { component: Component, ...rest } = this.props;
     return (
       <Route
         {...rest}
         render={props => (
-          this.state.authenticate === true ? (
+          this.props.isUserAuthenticated === true ? (
             <Component {...props} />
           ) : (
             <Redirect to={{

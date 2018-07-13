@@ -1,5 +1,9 @@
+import Auth from '../services/Auth';
+
 export const ADD_SUCCESS_MSG = 'ADD_SUCCESS_MSG';
 export const REMOVE_SUCCESS_MSG = 'REMOVE_SUCCESS_MSG';
+export const AUTHENTICATE = 'AUTHENTICATE';
+export const DEAUTHENTICATE = 'DEAUTHENTICATE';
 
 export function addSucessMsg(value) {
   return {
@@ -35,3 +39,46 @@ export const fetchSignIn = async (formData) => {
   });
   return response;
 };
+
+function authenticate(value) {
+  return {
+    type: AUTHENTICATE,
+    value,
+  };
+}
+
+function deauthenticate(value) {
+  return {
+    type: DEAUTHENTICATE,
+    value,
+  };
+}
+
+const getAuthCheckResponse = async () => {
+  const response = await fetch('/api/counter', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+  });
+  return response;
+};
+
+export function authCheck() {
+  return function (dispatch) {
+    return getAuthCheckResponse()
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error();
+        }
+        return res.json();
+      })
+      .then((res) => {
+        dispatch(authenticate());
+      })
+      .catch((err) => {
+        dispatch(deauthenticate());
+      });
+  };
+}

@@ -1,5 +1,5 @@
-import reducer from './calcReducer';
-import * as actionTypes from '../actions/calculating';
+import reducer from '../calcReducer';
+import * as actionTypes from '../../actions/calculating';
 
 describe('calcReducer', () => {
   it('should return the initial state', () => {
