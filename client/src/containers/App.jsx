@@ -12,10 +12,3 @@ const mapStateToProps = state => ({
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute);
-
-// export default connect(mapStateToProps, mapDispatchToProps, null, {
-//   pure: false,
-// })(PrivateRoute);

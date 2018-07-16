@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
       ...state,
       isUserAuthenticated: true,
     };
-  case actionTypes.DEAUTHENTICATE:
+  case actionTypes.UNAUTHENTICATE:
     return {
       ...state,
       isUserAuthenticated: false,

@@ -25,9 +25,11 @@ class App extends Component {
           this.setState({
             isLoading: false,
           });
-          this.props.fetchData();
+          if (res.status === 200) {
+            this.props.fetchData();
+          }
         });
-    }, 2000);
+    }, 50);
   }
 
   handleLogOut = () => {
@@ -59,6 +61,8 @@ class App extends Component {
 App.propTypes = {
   fetchData: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
+  authCheck: PropTypes.func.isRequired,
+  isUserAuthenticated: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
 };
 

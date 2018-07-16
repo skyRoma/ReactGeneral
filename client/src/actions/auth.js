@@ -3,7 +3,7 @@ import Auth from '../services/Auth';
 export const ADD_SUCCESS_MSG = 'ADD_SUCCESS_MSG';
 export const REMOVE_SUCCESS_MSG = 'REMOVE_SUCCESS_MSG';
 export const AUTHENTICATE = 'AUTHENTICATE';
-export const DEAUTHENTICATE = 'DEAUTHENTICATE';
+export const UNAUTHENTICATE = 'DEAUTHENTICATE';
 
 export function addSucessMsg(value) {
   return {
@@ -47,9 +47,9 @@ function authenticate(value) {
   };
 }
 
-function deauthenticate(value) {
+function unauthenticate(value) {
   return {
-    type: DEAUTHENTICATE,
+    type: UNAUTHENTICATE,
     value,
   };
 }
@@ -76,10 +76,11 @@ export function authCheck() {
       })
       .then((res) => {
         dispatch(authenticate());
+
         return res;
       })
       .catch((err) => {
-        dispatch(deauthenticate());
+        dispatch(unauthenticate());
         return err;
       });
   };
