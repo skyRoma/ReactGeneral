@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Input = styled.input`
   width:100%;
@@ -19,6 +19,20 @@ export const Input = styled.input`
   }
 `;
 
+const appear = keyframes`
+  0% {
+    opacity:0;
+    transform: translate(-50%,-100%);
+  };
+  50% {
+    opacity:.5;
+  };
+  100% {
+    opacity:1;
+    transform: translate(-50%, 0%);
+  };
+`;
+
 export const ErrorMsg = styled.div`
   position:relative;
   &:after {
@@ -30,8 +44,9 @@ export const ErrorMsg = styled.div`
     position:absolute;
     bottom: 0px;
     left: 50%;
-    transform: translate(-50%,-0%);
+    transform: translate(-50%, 0%);
     white-space: nowrap;
     word-wrap: normal;
+    animation: ${appear} 0.8s ease;
   }
 `;
