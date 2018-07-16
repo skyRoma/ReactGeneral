@@ -72,13 +72,15 @@ export function authCheck() {
         if (res.status !== 200) {
           throw new Error();
         }
-        return res.json();
+        return res;
       })
       .then((res) => {
         dispatch(authenticate());
+        return res;
       })
       .catch((err) => {
         dispatch(deauthenticate());
+        return err;
       });
   };
 }

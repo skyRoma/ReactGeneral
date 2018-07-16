@@ -1,6 +1,7 @@
-import styled, { injectGlobal } from 'styled-components';
+import styled, { injectGlobal, keyframes } from 'styled-components';
 import trash from '../../images/trash.png';
 import save from '../../images/save.png';
+import loading from '../../images/loading.png';
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
@@ -75,3 +76,23 @@ export const LogOutBtn = styled.button`
     background-color: #13886680;
   }
 `;
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const Loader = styled.img.attrs({
+  src: loading,
+})`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ${spin} 2s linear infinite;
+`;
+

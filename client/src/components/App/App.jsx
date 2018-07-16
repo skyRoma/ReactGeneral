@@ -14,7 +14,7 @@ const App = () => (
       <Route exact path={paths.home} component={Home} />
       <Route path={paths.login} component={AuthWindow} />
       <Route path={paths.join} component={AuthWindow} />
-      <PrivateRoute exact path={paths.counterApi} component={Main} />
+      <Route exact path={paths.counterApi} component={Main} />
     {/* </Switch> */}
   </React.Fragment>
 );
