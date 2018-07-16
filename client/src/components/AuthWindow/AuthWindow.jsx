@@ -44,11 +44,11 @@ class AuthWindow extends Component {
         return res.json();
       })
       .then((data) => {
+        Auth.authenticateUser(data.token);
         this.setState({
           errors: {},
           redirectToReferrer: true,
         });
-        Auth.authenticateUser(data.token);
       })
       .catch((errorData) => {
         const errors = errorData.errors ? errorData.errors : {};

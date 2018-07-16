@@ -19,21 +19,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.props.authCheck()
-        .then((res) => {
-          this.setState({
-            isLoading: false,
-          });
-          if (res.status === 200) {
-            this.props.fetchData();
-          }
+    this.props.authCheck()
+      .then((res) => {
+        this.setState({
+          isLoading: false,
         });
-    }, 50);
+        if (res.status === 200) {
+          this.props.fetchData();
+        }
+      });
   }
 
   handleLogOut = () => {
-    Auth.deauthenticateUser();
+    Auth.unauthenticateUser();
     this.props.history.push('/');
   }
 

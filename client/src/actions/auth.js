@@ -3,7 +3,7 @@ import Auth from '../services/Auth';
 export const ADD_SUCCESS_MSG = 'ADD_SUCCESS_MSG';
 export const REMOVE_SUCCESS_MSG = 'REMOVE_SUCCESS_MSG';
 export const AUTHENTICATE = 'AUTHENTICATE';
-export const UNAUTHENTICATE = 'DEAUTHENTICATE';
+export const UNAUTHENTICATE = 'UNAUTHENTICATE';
 
 export function addSucessMsg(value) {
   return {
@@ -76,7 +76,6 @@ export function authCheck() {
       })
       .then((res) => {
         dispatch(authenticate());
-
         return res;
       })
       .catch((err) => {
