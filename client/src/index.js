@@ -4,7 +4,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import App from './containers/App.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import App from './components/App/App';
 import rootReducer from './reducers/index';
 
 const loggerMiddleware = createLogger();
@@ -19,7 +20,9 @@ const store = createStore(
 
 render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
    document.getElementById('root')
 );

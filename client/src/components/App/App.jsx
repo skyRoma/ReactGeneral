@@ -1,42 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { AppWrapper, DropContainer, RecycleBin, Save } from './style';
-import Options from '../../containers/Options';
-import AppHeader from '../../components/Header/Header';
-import handleMouseDown from '../../utils/Drag&Drop';
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import Main from '../../containers/Main';
+import AuthWindow from '../../containers/AuthWindow';
+import Home from '../../components/Home/Home';
+import paths from '../../constants/paths';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recycleBinActive: false,
-      saveActive: false,
-    };
-    this.handleMouseDown = handleMouseDown.bind(this);
-  }
 
-  componentDidMount() {
-    this.props.fetchData();
-  }
-
-  render() {
-    return (
-      <AppWrapper>
-        <AppHeader handleMouseDown={this.handleMouseDown} counter={this.props.counter} />
-        <Options />
-        <DropContainer>
-          <RecycleBin className="droppableRemove" isActive={this.state.recycleBinActive} />
-          <Save className="droppableSave" isActive={this.state.saveActive} />
-        </DropContainer>
-      </AppWrapper>
-    );
-  }
-}
-
-App.propTypes = {
-  dropRemove: PropTypes.func.isRequired,
-  fetchData: PropTypes.func.isRequired,
-  counter: PropTypes.number.isRequired,
-};
+const App = () => (
+  <React.Fragment>
+      <Route exact path="/" render={() => (<Redirect to={paths.home} />)} />
+      <Route exact path={paths.home} component={Home} />
+      <Route path={paths.login} component={AuthWindow} />
+      <Route path={paths.join} component={AuthWindow} />
+      <Route exact path={paths.counterApi} component={Main} />
+  </React.Fragment>
+);
 
 export default App;

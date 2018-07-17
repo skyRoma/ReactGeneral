@@ -1,3 +1,5 @@
+import Auth from '../services/Auth';
+
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const ADD_VALUE = 'ADD_VALUE';
@@ -33,15 +35,21 @@ export function remove() {
   };
 }
 
-export function receiveData(value) {
+function receiveData(value) {
   return {
     type: RECEIVE,
     value,
   };
 }
 
-const callApi = async () => {
-  const response = await fetch('/api/counter');
+const getData = async () => {
+  const response = await fetch('/api/get-counter', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded',
+      Authorization: `bearer ${Auth.getToken()}`,
+    },
+  });
   const body = await response.json();
   if (response.status !== 200) {
     throw Error(body.message);
@@ -51,7 +59,7 @@ const callApi = async () => {
 
 export function fetchData() {
   return function (dispatch) {
-    callApi()
+    getData()
       .then(res => dispatch(receiveData(res.data)))
       .catch(console.error);
   };

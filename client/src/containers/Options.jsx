@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as actions from '.././actions/actions';
+import * as actions from '.././actions/calculating';
 import Options from '../components/Options/Options';
 
 const mapDispatchToProps = dispatch => ({

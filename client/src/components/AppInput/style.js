@@ -18,7 +18,7 @@ export const ErrorHint = styled.div`
     position:relative;
     &:before {
         content:'';
-        display:${props => (props.isError ? 'block' : 'none')};
+        display: ${props => (props.isError ? 'block' : 'none')};
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         border-bottom: 5px solid #801313;
