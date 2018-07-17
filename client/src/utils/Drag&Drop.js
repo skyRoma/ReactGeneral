@@ -1,4 +1,4 @@
-import Auth from '../services/Auth';
+import Api from '../services/Api';
 
 function handleMouseDown(event) {
   let currentRemoveDroppable = null;
@@ -66,14 +66,7 @@ function handleMouseDown(event) {
       this.setState({ recycleBinActive: false });
     }
     if (currentSaveDroppable) {
-      fetch('/api/set-counter', {
-        method: 'post',
-        headers: {
-          'Content-type': 'application/x-www-form-urlencoded',
-          Authorization: `bearer ${Auth.getToken()}`,
-        },
-        body: `counter=${this.props.counter}`,
-      })
+      Api.setData(this.props.counter)
         .catch((error) => {
           console.error(`Request failed: ${error}`);
         });

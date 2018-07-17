@@ -30,13 +30,14 @@ class AuthWindow extends Component {
     });
   }
 
-  processFormLogin = async () => {
+  getFormData = () => {
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
+    return `email=${email}&password=${password}`;
+  }
 
-
-    this.props.fetchSignIn(formData)
+  processFormLogin = async () => {
+    this.props.fetchSignIn(this.getFormData())
       .then(async (res) => {
         if (res.status !== 200) {
           throw await res.json();
@@ -61,11 +62,7 @@ class AuthWindow extends Component {
   }
 
   processFormSignUp = async () => {
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
-
-    this.props.fetchSignUp(formData)
+    this.props.fetchSignUp(this.getFormData())
       .then(async (res) => {
         if (res.status !== 200) {
           throw await res.json();

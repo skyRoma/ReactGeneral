@@ -61,8 +61,6 @@ export function fetchData() {
   return function (dispatch) {
     getData()
       .then(res => dispatch(receiveData(res.data)))
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   };
 }
