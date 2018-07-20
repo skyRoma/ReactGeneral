@@ -2,6 +2,7 @@
   "name": "Redux_Counter",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "npm": "^6.1.0",
     "prop-types": "^15.6.1",

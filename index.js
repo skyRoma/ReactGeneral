@@ -4,6 +4,8 @@ const passport = require('passport');
 
 const app = express();
 const port = process.env.PORT || 5000;
+const server_host = process.env.HOST || '0.0.0.0';
+
 
 require('./server/models').connect('mongodb://r.sluka:skyrom131@ds055925.mlab.com:55925/counter');
 
@@ -24,4 +26,4 @@ const apiRoutes = require('./server/routes/api');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, server_host, () => console.log(`Listening on port ${port}`));

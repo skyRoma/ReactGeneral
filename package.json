@@ -4,14 +4,19 @@
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon index.js",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node index.js",
     "setup": "yarn && cd client && yarn ",
-    "test": "cd client && yarn test "
+    "test": "cd client && yarn test ",
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "license": "MIT",
   "engines": {
     "yarn": "1.7.0"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
