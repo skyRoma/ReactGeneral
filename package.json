@@ -8,6 +8,7 @@
     "setup": "yarn && cd client && yarn ",
     "test": "cd client && yarn test "
   },
+  "license": "MIT",
   "engines": {
     "yarn": "1.7.0"
   },
