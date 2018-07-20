@@ -1,1 +1,1 @@
-web: yarn setup & yarn start
+web: yarn setup && yarn start
