@@ -5,7 +5,7 @@ const passport = require('passport');
 const app = express();
 const port = process.env.PORT || 5000;
 
-require('./server/models').connect('mongodb://localhost:27017/counter');
+require('./server/models').connect('mongodb://r.sluka:skyrom131@ds055925.mlab.com:55925/counter');
 
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
