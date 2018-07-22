@@ -1,14 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-const passport = require('passport');
-const path = require('path');
-
-const app = express();
-const port = process.env.PORT || 5000;
-const server_host = process.env.HOST || '0.0.0.0';
-
-
-require('./server/models').connect('mongodb://r.sluka:skyrom131@ds055925.mlab.com:55925/counter');
+require('./server/models').connect('mongodb://<dbuser>:<dbpassword>@ds055925.mlab.com:55925/counter');
 
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
