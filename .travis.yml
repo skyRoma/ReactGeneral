@@ -6,8 +6,8 @@ cache:
   - node_modules  
 script: 
   - cd client
-  - npm install
-  - npm test
+  - yarn
+  - yarn test
 deploy:  
   provider: heroku
   api_key:
