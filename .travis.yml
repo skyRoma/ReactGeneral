@@ -6,10 +6,9 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
 cache:
   yarn: true
-cache:
   directories:
   - node_modules
-  -client/node_modules  
+  - client/node_modules  
 script: 
   - cd client
   - yarn
