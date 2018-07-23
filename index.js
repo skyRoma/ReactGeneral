@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const server_host = process.env.HOST || '0.0.0.0';
 
-require('./server/models').connect('mongodb://<dbuser>:<dbpassword>@ds055925.mlab.com:55925/counter');
+require('./server/models').connect('mongodb://roman:12345678qw@ds055925.mlab.com:55925/counter');
 
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
