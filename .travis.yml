@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules  
+script: 
+  - cd client
+  - npm install
+  - npm test
+  # - npm run build
+deploy:  
+  provider: heroku
+  api_key:
+    secure: rZNzUZZpIvGw7HIehiuSxHSV41f/nqHbk2Fh5A8ZT7B85yUgn2WRpCoDLwOSgE1irqN+pbcmfj6MvtlWYeBjtOnY6eF8zOvHPmr6YYWZXOxpFhGjKR8rNxH9b9sAcc4oNwvbBzL/VW7gYR+K6O6ft87bA4Eug5fluzfjb8uXB2rsxBT76CE8G82OO9e2aO4DaF42KAaWuxXVExr7BlSOoDRTPUqCWPAglgIqmDcqGmAfI273wztIrcn/Bbm7jj9rZolPGmManS2zeIHpfuN8HmfJoR4PDZAd8kCNVPPrCuQ5oOJMuLlEzmwYPOVrANrcvJ6Q0zpJZwDd7PtRlboNRB1ky8lOb7Wzb72nsiU97SmR5l9x18OMIxFAGHi4DFUgjRySpcSAjJ2ERh+5ADL2QFypu+zymZkRoZa1AEKgz0aiq7L6dK1yFIG2DSUJLkC4WtLLdIjiPSXqAixbgdbh3XNw0N5nfn/qpIh6pIBh6TnEfrsYR/bhnDweN1ouqLJ+9Ai6gFZnB+WF71lCiyAxkk5we7zu7D0DQFhD/PNre1hs8QNQm/Am2guoP9dm9kPchVQVtqQYf/zkU3/6fwF8mX1eGE/DWnQiWJa769Ije41gzGC0OhDltJx1vubC6c2C8n5D/cEkGy5MQceYYpFcwXpOhJSm271tzhXF63SyH2E=
+  skip_cleanup: true
+  # github_token: $GITHUB_TOKEN
+  app: awesome-counter
+  on:
+    repo: skyRoma/ReactGeneral 
+
