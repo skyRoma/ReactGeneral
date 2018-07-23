@@ -6,6 +6,7 @@ describe('authReducer', () => {
     expect(reducer(undefined, {})).toEqual(
       {
         successMessage: '',
+        isUserAuthenticated: false,
       }
     );
   });
