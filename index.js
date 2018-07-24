@@ -34,4 +34,3 @@ res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 app.listen(port, server_host, () => console.log(`Listening on port ${port}`));
-// app.listen(port, () => console.log(`Listening on port ${port}`));
