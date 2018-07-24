@@ -1,23 +1,23 @@
 {
-    "name": "ReactGeneral",
-    "scripts": {
-    },
-    "env": {
-      "MONGO_URL": {
-        "required": true
-      }
-    },
-    "formation": {
-      "web": {
-        "quantity": 1
-      }
-    },
-    "addons": [
-  
-    ],
-    "buildpacks": [
-      {
-        "url": "heroku/nodejs"
-      }
-    ]
-  }
+  "name": "ReactGeneral",
+  "scripts": {
+  },
+  "env": {
+    "MONGO_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
