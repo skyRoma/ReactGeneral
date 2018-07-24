@@ -3,9 +3,6 @@
   "scripts": {
   },
   "env": {
-    "HOST": {
-      "required": true
-    },
     "MONGO_URL": {
       "required": true
     }
