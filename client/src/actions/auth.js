@@ -19,7 +19,7 @@ export function removeSucessMsg() {
 }
 
 export const fetchSignUp = async (formData) => {
-  const response = await fetch('/auth/signup', {
+  const response = await fetch(`${process.env.REACT_APP_API}/auth/signup`, {
     method: 'post',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded',
@@ -30,7 +30,7 @@ export const fetchSignUp = async (formData) => {
 };
 
 export const fetchSignIn = async (formData) => {
-  const response = await fetch('/auth/login', {
+  const response = await fetch(`${process.env.REACT_APP_API}/auth/login`, {
     method: 'post',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded',
@@ -55,7 +55,7 @@ function unauthenticate(value) {
 }
 
 const getAuthCheckResponse = async () => {
-  const response = await fetch('/api/counter', {
+  const response = await fetch(`${process.env.REACT_APP_API}/api/counter`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded',
