@@ -30,6 +30,5 @@
   "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.17.5"
-  },
-  "homepage": "https://awesome-counter.herokuapp.com/"
+  }
 }
