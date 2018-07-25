@@ -7,6 +7,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const server_host = process.env.HOST || '0.0.0.0';
 
+console.log(port)
+
 require('./server/models').connect(process.env.MONGO_URL || 'mongodb://roman:12345678qw@ds055925.mlab.com:55925/counter');
 
 const localSignupStrategy = require('./server/passport/local-signup');
@@ -33,5 +35,6 @@ app.get('*', (req, res) => {
 res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
+console.log('run app')
 app.listen(port, server_host, () => console.log(`Listening on port ${port} host ${server_host}`));
 
