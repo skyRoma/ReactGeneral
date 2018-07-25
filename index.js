@@ -5,7 +5,9 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 5000;
+const server_host = process.env.HOST || '0.0.0.0';
 
+console.log(port)
 console.log(port)
 
 require('./server/models').connect(process.env.MONGO_URL || 'mongodb://roman:12345678qw@ds055925.mlab.com:55925/counter');
@@ -35,5 +37,5 @@ res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 console.log('run app')
-app.listen(port, () => console.log(`Listening on port ${port} host ${server_host}`));
+app.listen(port, server_host, () => console.log(`Listening on port ${port} host ${server_host}`));
 
