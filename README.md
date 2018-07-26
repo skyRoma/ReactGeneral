@@ -1,2 +1,2 @@
+[![Build Status](https://travis-ci.org/skyRoma/ReactGeneral.svg?branch=master)](https://travis-ci.org/skyRoma/ReactGeneral)
 Counter
-![Travis CI Build Status](the_image_url_here)
