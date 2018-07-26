@@ -43,7 +43,7 @@ function receiveData(value) {
 }
 
 const getData = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API}/api/get-counter`, {
+  const response = await fetch('/api/get-counter', {
     method: 'GET',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded',
