@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { Header, Result } from './style';
 
 
-const AppHeader = ({ handleMouseDown, counter }) => (
+const AppHeader = ({ counter }) => (
   <Header>
-    <h2>Current Counter</h2> <Result className="result" onMouseDown={handleMouseDown}>{counter}</Result>
+    <h2>Current Counter</h2> <Result draggable="true">{counter}</Result>
   </Header>
 );
 
 AppHeader.propTypes = {
-  handleMouseDown: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
 };
 
