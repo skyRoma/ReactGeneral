@@ -34,10 +34,12 @@ export const AppWrapper = styled.div`
   min-width: 250px;
   margin: 0 auto;
 `;
+AppWrapper.displayName = 'AppWrapper';
 
 export const DropContainer = styled.div`
   display: flex;
 `;
+DropContainer.displayName = 'DropContainer';
 
 export const RecycleBin = styled.figure`
   border: ${props => (props.isActive ? '5px solid #6d8086' : '5px solid transparent')};
@@ -76,6 +78,7 @@ export const LogOutBtn = styled.button`
     background-color: #13886680;
   }
 `;
+LogOutBtn.displayName = 'LogOutBtn';
 
 const spin = keyframes`
   from {
@@ -95,4 +98,4 @@ export const Loader = styled.img.attrs({
   transform: translate(-50%, -50%);
   animation: ${spin} 2s linear infinite;
 `;
-
+Loader.displayName = 'Loader';
