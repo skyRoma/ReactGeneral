@@ -30,8 +30,7 @@ class App extends Component {
       });
   }
 
-  dragHandler = (event, value) => {
-    const { classList } = event.target;
+  dragHandler = ({ classList }, value) => {
     if (classList.contains('droppableRemove')) {
       this.setState({
         recycleBinActive: value,
@@ -44,7 +43,7 @@ class App extends Component {
   }
 
   dragEnter = (event) => {
-    this.dragHandler(event, true);
+    this.dragHandler(event.target, true);
   }
 
   dragOver = (event) => {
@@ -52,7 +51,7 @@ class App extends Component {
   }
 
   dragLeave = (event) => {
-    this.dragHandler(event, false);
+    this.dragHandler(event.target, false);
   }
 
   drop = (event) => {
