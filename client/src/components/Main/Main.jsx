@@ -8,7 +8,7 @@ import Auth from '../../services/Auth';
 import Api from '../../services/Api';
 
 
-class App extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -94,7 +94,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+Main.propTypes = {
   fetchData: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
   authCheck: PropTypes.func.isRequired,
@@ -103,4 +103,4 @@ App.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
-export default App;
+export default Main;
