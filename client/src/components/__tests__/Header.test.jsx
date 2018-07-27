@@ -7,7 +7,6 @@ Enzyme.configure({ adapter: new Adapter() });
 
 function setup() {
   const props = {
-    handleMouseDown: jest.fn(),
     counter: 0,
   };
   const enzymeWrapper = mount(<AppHeader {...props} />);
@@ -37,12 +36,6 @@ describe('components', () => {
     it('sould correct render counter passed in props', () => {
       const { enzymeWrapper } = setup();
       expect(enzymeWrapper.find('span').text()).toBe('0');
-    });
-
-    it('onMouseDown event should call handleMouseDown() function passed in props', () => {
-      const { enzymeWrapper, props } = setup();
-      enzymeWrapper.find('span').props().onMouseDown();
-      expect(props.handleMouseDown.mock.calls.length).toBe(1);
     });
   });
 });
