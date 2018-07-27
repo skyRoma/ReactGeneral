@@ -30,17 +30,21 @@ class App extends Component {
       });
   }
 
-  dragEnter = (event) => {
+  dragHandler = (event, value) => {
     const { classList } = event.target;
     if (classList.contains('droppableRemove')) {
       this.setState({
-        recycleBinActive: true,
+        recycleBinActive: value,
       });
     } else if (classList.contains('droppableSave')) {
       this.setState({
-        saveActive: true,
+        saveActive: value,
       });
     }
+  }
+
+  dragEnter = (event) => {
+    this.dragHandler(event, true);
   }
 
   dragOver = (event) => {
@@ -48,16 +52,7 @@ class App extends Component {
   }
 
   dragLeave = (event) => {
-    const { classList } = event.target;
-    if (classList.contains('droppableRemove')) {
-      this.setState({
-        recycleBinActive: false,
-      });
-    } else if (classList.contains('droppableSave')) {
-      this.setState({
-        saveActive: false,
-      });
-    }
+    this.dragHandler(event, false);
   }
 
   drop = (event) => {
